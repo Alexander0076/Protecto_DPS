@@ -1,0 +1,186 @@
+﻿@{
+    Layout = null;
+    @Styles.Render("~/Content/css/style.css")
+    @Styles.Render("~/Content/css/bootstrap.css")
+    @Styles.Render("~/Content/css/font-awesome.css")
+    @Styles.Render("~/Content/css/easy-responsive-tabs.css")
+    @Scripts.Render("~/Scripts/js/jquery-2.2.3.min.js")
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Pets Care an Animals Category Bootstrap Responsive website Template | Contact :: w3layouts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Pets Care Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+	SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+    <script type="application/x-javascript">
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- js -->
+    <!-- //js -->
+    <!-- web-fonts -->
+    <link href="//fonts.googleapis.com/css?family=Limelight" rel="stylesheet">
+    <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <!-- //web-fonts -->
+</head>
+
+<body>
+    <!-- banner -->
+    <div class="agileits-banner about-w3banner">
+        <div class="bnr-agileinfo">
+            <div class="banner-top w3layouts">
+                <div class="container">
+                    <ul class="agile_top_section">
+                        <li>
+                            <p><span class="glyphicon glyphicon-earphone"></span> +11 999 8888 7777 </p>
+                        </li>
+                        <li>@Html.ActionLink(" Iniciar sesión", "Login", "Home", new { @class = "sign fas fa-sign-in-alt", @aria_hidden = "true" })</li>
+                        <li>@Html.ActionLink(" Registrarse", "Login", "Home", new { @class = "sign fas fa-user-plus", @aria_hidden = "true" })</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="banner-w3text w3layouts">
+
+
+                <h2>Pets Care</h2>
+            </div>
+            <!-- navigation -->
+            <div class="top-nav w3-agiletop">
+                <div class="agile_inner_nav_w3ls">
+                    <div class="navbar-header w3llogo">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+
+                        </button>
+                        <h1><a href="index.html">Pets Care</a></h1>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <div class="w3menu navbar-left">
+                            <ul class="nav navbar">
+                                <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                                <li>@Html.ActionLink("Acerca de nostros", "About", "Home")</li>
+                                <li>@Html.ActionLink("Contacto", "Contact", "Home", new { @class = "active" })</li>
+                            </ul>
+                        </div>
+                        <div class="w3ls-bnr-icons social-icon navbar-right">
+                            <a href="#" class="social-button twitter"><i class="fa fa-twitter"></i></a>
+                            <a href="#" class="social-button facebook"><i class="fa fa-facebook"></i></a>
+                            <a href="#" class="social-button google"><i class="fa fa-google-plus"></i></a>
+                            <a href="#" class="social-button dribbble"><i class="fa fa-dribbble"></i></a>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+            </div>
+            <!-- //navigation -->
+        </div>
+    </div>
+    <!-- //banner -->
+    <!-- contact -->
+    <div class="contact">
+        <div class="container">
+            <h3 class="agileits-title">Contact Us</h3>
+            <div class="contact-agileinfo">
+                <div class="col-md-7 contact-right">
+                    <form action="#" method="post">
+                        <input type="text" name="Name" placeholder="Name" required="">
+                        <input type="text" class="email" name="Email" placeholder="Email" required="">
+                        <input type="text" name="Phone no" placeholder="Phone" required="">
+                        <textarea name="Message" placeholder="Message" required=""></textarea>
+                        <input type="submit" value="SUBMIT">
+                    </form>
+                </div>
+                <div class="col-md-5 contact-left">
+                    <div class="address">
+                        <h5>Address:</h5>
+                        <p><i class="glyphicon fas fa-map-marker-alt"></i> 333 Broome St New York, NY 10002, </p>
+                    </div>
+                    <div class="address address-mdl">
+                        <h5>Phones:</h5>
+                        <p><i class="glyphicon fas fa-phone-alt"></i> +11 222 333</p>
+                    </div>
+                    <div class="address">
+                        <h5>Email:</h5>
+                        <p><i class="glyphicon glyphicon-envelope"></i> <a href="mailto:info@example.com">mail@example.com</a></p>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <div class="agileits-w3layouts-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.9503398796587!2d-73.9940307!3d40.719109700000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a27e2f24131%3A0x64ffc98d24069f02!2sCANADA!5e0!3m2!1sen!2sin!4v1441710758555"
+                allowfullscreen></iframe>
+    </div>
+   
+    <!-- copy rights start here -->
+    <div class="copy-w3right">
+        <div class="container">
+            <div class="top-nav bottom-w3lnav">
+                <ul class="nav navbar">
+                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Acerca de nostros", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- //copy right end here -->
+    <!-- start-smooth-scrolling -->
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+
+                $('html,body').animate({
+                    scrollTop: $(this.hash).offset().top
+                }, 1000);
+            });
+        });
+    </script>
+    <!-- //end-smooth-scrolling -->
+    <!-- smooth-scrolling-of-move-up -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            /*
+            var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+            };
+            */
+
+            $().UItoTop({
+                easingType: 'easeOutQuart'
+            });
+
+        });
+    </script>
+    <!-- //smooth-scrolling-of-move-up -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+</body>
+@Scripts.Render("~/Scripts/js/bootstrap.js")
+@Scripts.Render("~/Scripts/js/jquery.transit.js")
+@Scripts.Render("~/Scripts/js/jquery.textFx.js")
+@Scripts.Render("~/Scripts/js/SmoothScroll.min.js")
+@Scripts.Render("~/Scripts/js/easy-responsive-tabs.js")
+@Scripts.Render("~/Scripts/js/move-top.js")
+@Scripts.Render("~/Scripts/js/easing.js")
+</html>
