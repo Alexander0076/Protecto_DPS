@@ -45,10 +45,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -120,10 +128,50 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\personalController.cs" />
+    <Compile Include="filters\VerifySession.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\administrador.cs">
+      <DependentUpon>Veterinaria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Animal.cs">
+      <DependentUpon>Veterinaria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\cargo.cs">
+      <DependentUpon>Veterinaria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Citas.cs">
+      <DependentUpon>Veterinaria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\personal.cs">
+      <DependentUpon>Veterinaria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>Veterinaria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UsuarioCliente.cs">
+      <DependentUpon>Veterinaria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Veterinaria.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Veterinaria.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Veterinaria.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Veterinaria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Veterinaria.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Veterinaria.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ConsultasModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -137,6 +185,8 @@
     <Content Include="Content\css\font-awesome.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\css\style1.css" />
+    <Content Include="Content\css\stylelista.css" />
+    <Content Include="Content\css\StyleNuevaCita.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -161,6 +211,35 @@
     <Content Include="images\left.png" />
     <Content Include="images\move-up.png" />
     <Content Include="images\right.png" />
+    <Content Include="Models\Veterinaria.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Veterinaria.edmx</DependentUpon>
+      <LastGenOutput>Veterinaria.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Veterinaria.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Veterinaria.edmx</DependentUpon>
+      <LastGenOutput>Veterinaria.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\alertifyjs\alertify.js" />
+    <Content Include="Scripts\alertifyjs\alertify.min.js" />
+    <Content Include="Scripts\alertifyjs\css\alertify.css" />
+    <Content Include="Scripts\alertifyjs\css\alertify.min.css" />
+    <Content Include="Scripts\alertifyjs\css\alertify.rtl.css" />
+    <Content Include="Scripts\alertifyjs\css\alertify.rtl.min.css" />
+    <Content Include="Scripts\alertifyjs\css\themes\bootstrap.css" />
+    <Content Include="Scripts\alertifyjs\css\themes\bootstrap.min.css" />
+    <Content Include="Scripts\alertifyjs\css\themes\bootstrap.rtl.css" />
+    <Content Include="Scripts\alertifyjs\css\themes\bootstrap.rtl.min.css" />
+    <Content Include="Scripts\alertifyjs\css\themes\default.css" />
+    <Content Include="Scripts\alertifyjs\css\themes\default.min.css" />
+    <Content Include="Scripts\alertifyjs\css\themes\default.rtl.css" />
+    <Content Include="Scripts\alertifyjs\css\themes\default.rtl.min.css" />
+    <Content Include="Scripts\alertifyjs\css\themes\semantic.css" />
+    <Content Include="Scripts\alertifyjs\css\themes\semantic.min.css" />
+    <Content Include="Scripts\alertifyjs\css\themes\semantic.rtl.css" />
+    <Content Include="Scripts\alertifyjs\css\themes\semantic.rtl.min.css" />
+    <Content Include="Scripts\alertifyjs\jquery-3.2.1.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\fonts\fontawesome-webfont.eot" />
@@ -170,6 +249,13 @@
     <Content Include="fonts\fonts\FontAwesome.otf" />
     <Content Include="fonts\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\fonts\glyphicons-halflings-regular.woff2" />
+    <EntityDeploy Include="Models\Veterinaria.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Veterinaria.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Veterinaria.edmx.diagram">
+      <DependentUpon>Veterinaria.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -205,10 +291,15 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\personal\Index.cshtml" />
+    <Content Include="Views\Cliente\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutInicio.cshtml" />
+    <Content Include="Views\Shared\_LayoutCliente.cshtml" />
+    <Content Include="Views\Cliente\Insertar.cshtml" />
+    <Content Include="Views\Cliente\Citas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -222,6 +313,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

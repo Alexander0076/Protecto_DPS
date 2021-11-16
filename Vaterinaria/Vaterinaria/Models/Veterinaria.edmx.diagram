@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="18265708cfd9420ab20c09cd484c920c" Name="Diagram1">
+        <EntityTypeShape EntityType="VeterinariaModel.administrador" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VeterinariaModel.Animal" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="VeterinariaModel.cargo" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VeterinariaModel.Citas" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="VeterinariaModel.personal" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VeterinariaModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VeterinariaModel.UsuarioCliente" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <AssociationConnector Association="VeterinariaModel.FK__Citas__Id_TipoAn__2F10007B" ManuallyRouted="false" />
+        <AssociationConnector Association="VeterinariaModel.FK__personal__Id_car__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="VeterinariaModel.FK__Citas__Id_client__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="VeterinariaModel.FK__Citas__Id_person__300424B4" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

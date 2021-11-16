@@ -8,6 +8,7 @@ namespace Vaterinaria
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+            //filters.Add(new filtres.VerifySession());
         }
     }
 }

@@ -2,6 +2,13 @@
 Author: W3layouts
 Author URL: http://w3layouts.com
  */
+.alert {
+    background: #DC343B;
+    color: white;
+    height: 10px;
+    border-radius: 7px;
+    padding: 7%;
+}
 html {
     scroll-behavior: smooth;
 }

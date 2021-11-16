@@ -164,3 +164,7 @@ C:\Users\MINEDUCYT\Desktop\Protecto_DPS\Vaterinaria\Vaterinaria\obj\Debug\Vateri
 C:\Users\MINEDUCYT\Desktop\Protecto_DPS\Vaterinaria\Vaterinaria\obj\Debug\Vaterinaria.csproj.CopyComplete
 C:\Users\MINEDUCYT\Desktop\Protecto_DPS\Vaterinaria\Vaterinaria\obj\Debug\Vaterinaria.dll
 C:\Users\MINEDUCYT\Desktop\Protecto_DPS\Vaterinaria\Vaterinaria\obj\Debug\Vaterinaria.pdb
+C:\Users\MINEDUCYT\Desktop\Protecto_DPS\Vaterinaria\Vaterinaria\bin\EntityFramework.dll
+C:\Users\MINEDUCYT\Desktop\Protecto_DPS\Vaterinaria\Vaterinaria\bin\EntityFramework.SqlServer.dll
+C:\Users\MINEDUCYT\Desktop\Protecto_DPS\Vaterinaria\Vaterinaria\bin\EntityFramework.xml
+C:\Users\MINEDUCYT\Desktop\Protecto_DPS\Vaterinaria\Vaterinaria\bin\EntityFramework.SqlServer.xml

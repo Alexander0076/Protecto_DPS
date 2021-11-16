@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VeterinariaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="administrador">
+    <Key>
+      <PropertyRef Name="Id_admin" />
+    </Key>
+    <Property Name="Id_admin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Usuario" Type="varchar" MaxLength="100" />
+    <Property Name="pass" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Animal">
+    <Key>
+      <PropertyRef Name="Id_TipoAnimal" />
+    </Key>
+    <Property Name="Id_TipoAnimal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tipo" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="cargo">
+    <Key>
+      <PropertyRef Name="Id_cargo" />
+    </Key>
+    <Property Name="Id_cargo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre_cargo" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Citas">
+    <Key>
+      <PropertyRef Name="Id_cita" />
+    </Key>
+    <Property Name="Id_cita" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre_Propietario" Type="varchar" MaxLength="100" />
+    <Property Name="Id_TipoAnimal" Type="int" />
+    <Property Name="Raza" Type="varchar" MaxLength="100" />
+    <Property Name="Fecha_cita" Type="date" />
+    <Property Name="Hora_cita" Type="time" Precision="7" />
+    <Property Name="Nombre_Animal" Type="varchar" MaxLength="100" />
+    <Property Name="Edad" Type="int" />
+    <Property Name="Sexo" Type="varchar" MaxLength="10" />
+    <Property Name="Id_personal" Type="int" />
+    <Property Name="Id_cliente" Type="int" />
+  </EntityType>
+  <EntityType Name="personal">
+    <Key>
+      <PropertyRef Name="Id_personal" />
+    </Key>
+    <Property Name="Id_personal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" />
+    <Property Name="sexo" Type="varchar" MaxLength="20" />
+    <Property Name="Fecha_nac" Type="date" />
+    <Property Name="Id_cargo" Type="int" />
+    <Property Name="Usuario" Type="varchar" MaxLength="100" />
+    <Property Name="pass" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="UsuarioCliente">
+    <Key>
+      <PropertyRef Name="Id_Usuario" />
+    </Key>
+    <Property Name="Id_Usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Usuario" Type="varchar" MaxLength="100" />
+    <Property Name="pass" Type="varchar" MaxLength="100" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" />
+    <Property Name="Edad" Type="int" />
+    <Property Name="Sexo" Type="varchar" MaxLength="10" />
+    <Property Name="Direccion" Type="varchar" MaxLength="100" />
+    <Property Name="Telefono" Type="varchar" MaxLength="12" />
+  </EntityType>
+  <Association Name="FK__Citas__Id_client__30F848ED">
+    <End Role="UsuarioCliente" Type="Self.UsuarioCliente" Multiplicity="0..1" />
+    <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UsuarioCliente">
+        <PropertyRef Name="Id_Usuario" />
+      </Principal>
+      <Dependent Role="Citas">
+        <PropertyRef Name="Id_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Citas__Id_person__300424B4">
+    <End Role="personal" Type="Self.personal" Multiplicity="0..1" />
+    <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="personal">
+        <PropertyRef Name="Id_personal" />
+      </Principal>
+      <Dependent Role="Citas">
+        <PropertyRef Name="Id_personal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Citas__Id_TipoAn__2F10007B">
+    <End Role="Animal" Type="Self.Animal" Multiplicity="0..1" />
+    <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Animal">
+        <PropertyRef Name="Id_TipoAnimal" />
+      </Principal>
+      <Dependent Role="Citas">
+        <PropertyRef Name="Id_TipoAnimal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__personal__Id_car__286302EC">
+    <End Role="cargo" Type="Self.cargo" Multiplicity="0..1" />
+    <End Role="personal" Type="Self.personal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cargo">
+        <PropertyRef Name="Id_cargo" />
+      </Principal>
+      <Dependent Role="personal">
+        <PropertyRef Name="Id_cargo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="VeterinariaModelStoreContainer">
+    <EntitySet Name="administrador" EntityType="Self.administrador" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Animal" EntityType="Self.Animal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cargo" EntityType="Self.cargo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Citas" EntityType="Self.Citas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="personal" EntityType="Self.personal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UsuarioCliente" EntityType="Self.UsuarioCliente" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Citas__Id_client__30F848ED" Association="Self.FK__Citas__Id_client__30F848ED">
+      <End Role="UsuarioCliente" EntitySet="UsuarioCliente" />
+      <End Role="Citas" EntitySet="Citas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Citas__Id_person__300424B4" Association="Self.FK__Citas__Id_person__300424B4">
+      <End Role="personal" EntitySet="personal" />
+      <End Role="Citas" EntitySet="Citas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Citas__Id_TipoAn__2F10007B" Association="Self.FK__Citas__Id_TipoAn__2F10007B">
+      <End Role="Animal" EntitySet="Animal" />
+      <End Role="Citas" EntitySet="Citas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__personal__Id_car__286302EC" Association="Self.FK__personal__Id_car__286302EC">
+      <End Role="cargo" EntitySet="cargo" />
+      <End Role="personal" EntitySet="personal" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

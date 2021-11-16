@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Vaterinaria.Models.Citas>
+
+@{
+    Layout = "~/Views/Shared/_LayoutCliente.cshtml";
+    @Styles.Render("~/Content/css/stylelista.css")
+}
+
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<div class="col-md-8 span_8">
+    <div class="activity_box">
+        <div class="scrollbar" id="style-2">
+
+            @foreach (var item in Model)
+            {
+                <div class="activity-row">
+                    <div class="col-xs-1"><i class="fa fa-thumbs-up text-info icon_13"> </i>  </div>
+                    <div class="col-xs-3 activity-img"><img src='images/5.png' class="img-responsive" alt="" /></div>
+                    <div class="col-xs-8 activity-desc">
+                        <h5>Nombre del dueño: @item.Nombre_Propietario</h5>
+                        <h5>Nombre de la mascota: @item.Nombre_Animal</h5>
+                        <p>Veterinario: @item.personal.Nombre</p>
+                        <p>Raza: @item.Raza</p>
+                        <p>Edad: @item.Edad</p>
+                        <p>Sexo: @item.Sexo</p>
+                        <p>Tipo: @item.Animal.Tipo</p>
+                        <h6>@item.Fecha_cita</h6>
+                        <h6>@item.Hora_cita</h6>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />

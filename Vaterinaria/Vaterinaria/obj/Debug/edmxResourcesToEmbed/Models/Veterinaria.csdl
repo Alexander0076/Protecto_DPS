@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VeterinariaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="administrador">
+    <Key>
+      <PropertyRef Name="Id_admin" />
+    </Key>
+    <Property Name="Id_admin" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="pass" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Animal">
+    <Key>
+      <PropertyRef Name="Id_TipoAnimal" />
+    </Key>
+    <Property Name="Id_TipoAnimal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tipo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Citas" Relationship="Self.FK__Citas__Id_TipoAn__2F10007B" FromRole="Animal" ToRole="Citas" />
+  </EntityType>
+  <EntityType Name="cargo">
+    <Key>
+      <PropertyRef Name="Id_cargo" />
+    </Key>
+    <Property Name="Id_cargo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre_cargo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="personal" Relationship="Self.FK__personal__Id_car__286302EC" FromRole="cargo" ToRole="personal" />
+  </EntityType>
+  <EntityType Name="Citas">
+    <Key>
+      <PropertyRef Name="Id_cita" />
+    </Key>
+    <Property Name="Id_cita" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre_Propietario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Id_TipoAnimal" Type="Int32" />
+    <Property Name="Raza" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Fecha_cita" Type="DateTime" Precision="0" />
+    <Property Name="Hora_cita" Type="Time" Precision="7" />
+    <Property Name="Nombre_Animal" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Edad" Type="Int32" />
+    <Property Name="Sexo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Id_personal" Type="Int32" />
+    <Property Name="Id_cliente" Type="Int32" />
+    <NavigationProperty Name="Animal" Relationship="Self.FK__Citas__Id_TipoAn__2F10007B" FromRole="Citas" ToRole="Animal" />
+    <NavigationProperty Name="UsuarioCliente" Relationship="Self.FK__Citas__Id_client__30F848ED" FromRole="Citas" ToRole="UsuarioCliente" />
+    <NavigationProperty Name="personal" Relationship="Self.FK__Citas__Id_person__300424B4" FromRole="Citas" ToRole="personal" />
+  </EntityType>
+  <EntityType Name="personal">
+    <Key>
+      <PropertyRef Name="Id_personal" />
+    </Key>
+    <Property Name="Id_personal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="sexo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Fecha_nac" Type="DateTime" Precision="0" />
+    <Property Name="Id_cargo" Type="Int32" />
+    <Property Name="Usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="pass" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="cargo" Relationship="Self.FK__personal__Id_car__286302EC" FromRole="personal" ToRole="cargo" />
+    <NavigationProperty Name="Citas" Relationship="Self.FK__Citas__Id_person__300424B4" FromRole="personal" ToRole="Citas" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="UsuarioCliente">
+    <Key>
+      <PropertyRef Name="Id_Usuario" />
+    </Key>
+    <Property Name="Id_Usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="pass" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Edad" Type="Int32" />
+    <Property Name="Sexo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Telefono" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Citas" Relationship="Self.FK__Citas__Id_client__30F848ED" FromRole="UsuarioCliente" ToRole="Citas" />
+  </EntityType>
+  <Association Name="FK__Citas__Id_TipoAn__2F10007B">
+    <End Role="Animal" Type="Self.Animal" Multiplicity="0..1" />
+    <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Animal">
+        <PropertyRef Name="Id_TipoAnimal" />
+      </Principal>
+      <Dependent Role="Citas">
+        <PropertyRef Name="Id_TipoAnimal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__personal__Id_car__286302EC">
+    <End Role="cargo" Type="Self.cargo" Multiplicity="0..1" />
+    <End Role="personal" Type="Self.personal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cargo">
+        <PropertyRef Name="Id_cargo" />
+      </Principal>
+      <Dependent Role="personal">
+        <PropertyRef Name="Id_cargo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Citas__Id_client__30F848ED">
+    <End Role="UsuarioCliente" Type="Self.UsuarioCliente" Multiplicity="0..1" />
+    <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UsuarioCliente">
+        <PropertyRef Name="Id_Usuario" />
+      </Principal>
+      <Dependent Role="Citas">
+        <PropertyRef Name="Id_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Citas__Id_person__300424B4">
+    <End Role="personal" Type="Self.personal" Multiplicity="0..1" />
+    <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="personal">
+        <PropertyRef Name="Id_personal" />
+      </Principal>
+      <Dependent Role="Citas">
+        <PropertyRef Name="Id_personal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="VeterinariaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="administrador" EntityType="Self.administrador" />
+    <EntitySet Name="Animal" EntityType="Self.Animal" />
+    <EntitySet Name="cargo" EntityType="Self.cargo" />
+    <EntitySet Name="Citas" EntityType="Self.Citas" />
+    <EntitySet Name="personal" EntityType="Self.personal" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="UsuarioCliente" EntityType="Self.UsuarioCliente" />
+    <AssociationSet Name="FK__Citas__Id_TipoAn__2F10007B" Association="Self.FK__Citas__Id_TipoAn__2F10007B">
+      <End Role="Animal" EntitySet="Animal" />
+      <End Role="Citas" EntitySet="Citas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__personal__Id_car__286302EC" Association="Self.FK__personal__Id_car__286302EC">
+      <End Role="cargo" EntitySet="cargo" />
+      <End Role="personal" EntitySet="personal" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Citas__Id_client__30F848ED" Association="Self.FK__Citas__Id_client__30F848ED">
+      <End Role="UsuarioCliente" EntitySet="UsuarioCliente" />
+      <End Role="Citas" EntitySet="Citas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Citas__Id_person__300424B4" Association="Self.FK__Citas__Id_person__300424B4">
+      <End Role="personal" EntitySet="personal" />
+      <End Role="Citas" EntitySet="Citas" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
