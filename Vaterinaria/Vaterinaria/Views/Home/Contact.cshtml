@@ -1,40 +1,93 @@
-﻿@{
+﻿@model Vaterinaria.Models.Contacto
+@{
     Layout = "~/Views/Shared/_LayoutInicio.cshtml";
 
 }
-<!-- contact -->
-<div class="contact">
-    <div class="container">
-        <h3 class="agileits-title">Contact Us</h3>
-        <div class="contact-agileinfo">
-            <div class="col-md-7 contact-right">
-                <form action="#" method="post">
-                    <input type="text" name="Name" placeholder="Name" required="">
-                    <input type="text" class="email" name="Email" placeholder="Email" required="">
-                    <input type="text" name="Phone no" placeholder="Phone" required="">
-                    <textarea name="Message" placeholder="Message" required=""></textarea>
-                    <input type="submit" value="SUBMIT">
-                </form>
-            </div>
-            <div class="col-md-5 contact-left">
-                <div class="address">
-                    <h5>Address:</h5>
-                    <p><i class="glyphicon fas fa-map-marker-alt"></i> 333 Broome St New York, NY 10002, </p>
-                </div>
-                <div class="address address-mdl">
-                    <h5>Phones:</h5>
-                    <p><i class="glyphicon fas fa-phone-alt"></i> +11 222 333</p>
-                </div>
-                <div class="address">
-                    <h5>Email:</h5>
-                    <p><i class="glyphicon glyphicon-envelope"></i> <a href="mailto:info@example.com">mail@example.com</a></p>
-                </div>
-            </div>
-            <div class="clearfix"></div>
+
+<section class="w3l-inner-banner-main">
+    <div class="about-inner editContent">
+        <div class="container">
+            <ul class="breadcrumbs-custom-path">
+                <li class="right-side propClone">@Html.ActionLink("Inicio", "Index", "Home", new { @class = "editContent", @aria_hidden = "true" }) <span class="fas fa-chevron-right" aria-hidden="true"></span></li>
+                <li class="active editContent">Contacto</li>
+            </ul>
         </div>
     </div>
-</div>
-<div class="agileits-w3layouts-map">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.9503398796587!2d-73.9940307!3d40.719109700000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a27e2f24131%3A0x64ffc98d24069f02!2sCANADA!5e0!3m2!1sen!2sin!4v1441710758555"
-            allowfullscreen></iframe>
-</div>
+</section>
+
+<section class="w3l-contact-info-main" id="contact">
+    <div class="contact-sec	editContent">
+        <div class="container">
+            <div class="main-titles-head text-center">
+                <h3 class="header-name editContent">
+                    Get in Touch
+                </h3>
+                <p class="tiltle-para editContent editContent">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic fuga sit illo modi aut aspernatur tempore laboriosam saepe dolores eveniet.</p>
+            </div>
+            <div class="d-grid contact-view">
+                <div class="cont-details">
+                    <div class="cont-top">
+                        <div class="cont-left text-center">
+                            <span class="fas fa-phone-alt text-primary"></span>
+                        </div>
+                        <div class="cont-right">
+                            <p class="para"><a href="tel:+44 99 555 42">+123 45 67 89</a></p>
+                        </div>
+                    </div>
+                    <div class="cont-top margin-up">
+                        <div class="cont-left text-center">
+                            <span class="far fa-envelope text-primary"></span>
+                        </div>
+                        <div class="cont-right">
+                            <p class="para"><a href="mailto:example@mail.com" class="mail">example@mail.com</a></p>
+                        </div>
+                    </div>
+                    <div class="cont-top margin-up">
+                        <div class="cont-left text-center">
+                            <span class="fas fa-map-marker-alt text-primary"></span>
+                        </div>
+                        <div class="cont-right">
+                            <p class="para">
+                                California, #32841 block,
+                                <br> #221DRS 75 West Rock,<br> Maple Building, UK.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-iframe ">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d317718.69319292053!2d-0.3817765050863085!3d51.528307984912544!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondon%2C+UK!5e0!3m2!1sen!2spl!4v1562654563739!5m2!1sen!2spl" width="100%" height="300" frameborder="0" style="border: 0px; pointer-events: none;" allowfullscreen=""></iframe>
+                </div>
+
+            </div>
+            @using (Html.BeginForm("AgregarMensaje", "Home", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <div class="map-content-9 mt-5">
+                    <form action="#" method="post">
+                        <div class="twice">
+                            @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nombre", @id = "w3lName", @required = "" } })
+                            @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="twice">
+
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @type = "email", @placeholder = "Correo electronico", @id = "w3lSender", @required = "" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="twice">
+                            @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control", @id = "w3lSubject", @placeholder = "Numero de telefono", @required = "" } })
+                            @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                        </div>
+
+                        @Html.EditorFor(model => model.Mensaje, new { htmlAttributes = new { @class = "form-control", @placeholder = "Mensaje", @id = "w3lMessage",
+                       @required = "" } })
+                        @Html.ValidationMessageFor(model => model.Mensaje, "", new { @class = "text-danger" })
+
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-contact">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            }
+        </div>
+    </div>
+</section>

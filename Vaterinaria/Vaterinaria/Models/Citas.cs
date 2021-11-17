@@ -25,9 +25,11 @@ namespace Vaterinaria.Models
         public string Sexo { get; set; }
         public Nullable<int> Id_personal { get; set; }
         public Nullable<int> Id_cliente { get; set; }
+        public Nullable<int> Id_estado { get; set; }
     
         public virtual Animal Animal { get; set; }
         public virtual UsuarioCliente UsuarioCliente { get; set; }
+        public virtual Estado Estado { get; set; }
         public virtual personal personal { get; set; }
     }
 }

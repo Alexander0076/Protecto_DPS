@@ -26,8 +26,8 @@
         <div class="workinghny-form-grid">
             <div class="wrapper">
                 <div class="workinghny-block-grid">
-                    <div class="workinghny-left-img align-end" style="position:relative; bottom:20%;">
-                        <img src="~/images/g6.jpg" class="img-responsive" alt="img" />
+                    <div class="workinghny-left-img align-end" style="position:relative; bottom:15%;">
+                        <img src="~/images/3.jpg" class="img-responsive" alt="img" height="330" width="550" />
                     </div>
                     <div class="form-right-inf">
                         @if (TempData["mensaje"] != null)
@@ -50,7 +50,7 @@
                                         <input type="password" name="pass" />
                                     </div>
                                     <input type="submit" name="Submit" value=" Sign In" class="btn btn-style mt-3" />
-                                    <p class="already">No tienes una cuenta? <a href="#signin">Registrarse</a></p>
+                                    <p class="already">No tienes una cuenta? @Html.ActionLink("Registrarse", "Registrar", "Home")</p>
                                     <p class="already">@Html.ActionLink("Volver", "Index", "Home")</p>
                                 </form>
                             </div>

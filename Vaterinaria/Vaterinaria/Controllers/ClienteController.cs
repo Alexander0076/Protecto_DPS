@@ -25,7 +25,7 @@ namespace Vaterinaria.Controllers
         {
             return View(modelo.listaCita());
         }
-
+        
         public ActionResult Insertar()
         {
 
@@ -54,6 +54,8 @@ namespace Vaterinaria.Controllers
             List<SelectListItem> listaA = new List<SelectListItem>();
             List<personal> lista2 = modelo.listaPersonal();
             List<SelectListItem> listaP = new List<SelectListItem>();
+            List<Estado> lista3 = modelo.listaEstado();
+            List<SelectListItem> listaE = new List<SelectListItem>();
             Citas cita = modelo.obtenerCita(id);
             foreach (Animal item in lista1)
             {
@@ -85,8 +87,22 @@ namespace Vaterinaria.Controllers
 
             }
 
+            foreach (Estado item in lista3)
+            {
+                if (item.Id_estado == cita.Estado.Id_estado)
+                {
+                    listaE.Add(new SelectListItem { Text = item.Tipo_estado, Value = item.Id_estado.ToString(), Selected = true });
 
+                }
+                else
+                {
+                    listaE.Add(new SelectListItem { Text = item.Tipo_estado, Value = item.Id_estado.ToString() });
 
+                }
+
+            }
+            
+            ViewBag.listaEstado = listaE;
             ViewBag.listaAnimal = listaA;
             ViewBag.listaPersonal = listaP;
             return View(modelo.obtenerCita(id));
@@ -114,20 +130,19 @@ namespace Vaterinaria.Controllers
             cita.Edad = Edad;
             cita.Sexo = Sexo;
             cita.Id_personal = listaPersonal;
+            cita.Id_estado = 1;
 
 
 
             modelo.insertarCita(cita);
             TempData["mensajeCliente"] = "Se realizo su cita con exito";
-            TempData["mensajePersonal"] = Nombre_Propietario + "Ha hecho una cita";
-            return RedirectToAction("Index", modelo.listaCita());
+            TempData["mensajePersonal"] = Nombre_Propietario + " Ha hecho una cita";
+            return RedirectToAction("Insertar", modelo.listaCita());
         }
+
         [ActionName("Editar")]
-        public ActionResult edit(int listaPersonal, int listaAnimal,int Id_cita, String Nombre_Propietario, String Raza, DateTime Fecha_cita, TimeSpan Hora_cita, String Nombre_Animal, int Edad, String Sexo)
+        public ActionResult edit(int listaPersonal, int listaAnimal, int listaEstado, int Id_cita, String Nombre_Propietario, String Raza, DateTime Fecha_cita, TimeSpan Hora_cita, String Nombre_Animal, int Edad, String Sexo)
         {
-            var lista = from p in db.UsuarioCliente
-                        where p.Nombre == Nombre_Propietario.Trim()
-                        select p.Id_Usuario;
 
             Citas cita = new Citas();
             cita.Id_cita = Id_cita;
@@ -140,18 +155,19 @@ namespace Vaterinaria.Controllers
             cita.Edad = Edad;
             cita.Sexo = Sexo;
             cita.Id_personal = listaPersonal;
+            cita.Id_estado = listaEstado;
 
             modelo.editarCita(cita);
             TempData["mensajeCliente"] = "Ha modificado su cita";
-            TempData["mensajePersonal"] = Nombre_Propietario + "Ha modificado su cita";
+            TempData["mensajePersonal"] = Nombre_Propietario + " Ha modificado su cita";
             return RedirectToAction("Index", modelo.listaCita());
         }
-        public ActionResult Cancelar(int id)
+        public ActionResult Eliminar(int id)
         {
 
             modelo.eliminarCita(id);
             TempData["mensajeCliente"] = "Cita cancelada";
-            TempData["mensajePersonal"] = id+ "Ha cancelado su cita";
+            TempData["mensajePersonal"] = id+ " Ha cancelado su cita";
             return RedirectToAction("Index", modelo.listaCita());
         }
     }

@@ -37,6 +37,24 @@
     <Property Name="Sexo" Type="varchar" MaxLength="10" />
     <Property Name="Id_personal" Type="int" />
     <Property Name="Id_cliente" Type="int" />
+    <Property Name="Id_estado" Type="int" />
+  </EntityType>
+  <EntityType Name="Contacto">
+    <Key>
+      <PropertyRef Name="Id_contacto" />
+    </Key>
+    <Property Name="Id_contacto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" />
+    <Property Name="Email" Type="varchar" MaxLength="100" />
+    <Property Name="Phone" Type="varchar" MaxLength="20" />
+    <Property Name="Mensaje" Type="text" />
+  </EntityType>
+  <EntityType Name="Estado">
+    <Key>
+      <PropertyRef Name="Id_estado" />
+    </Key>
+    <Property Name="Id_estado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tipo_estado" Type="varchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="personal">
     <Key>
@@ -73,7 +91,7 @@
     <Property Name="Direccion" Type="varchar" MaxLength="100" />
     <Property Name="Telefono" Type="varchar" MaxLength="12" />
   </EntityType>
-  <Association Name="FK__Citas__Id_client__30F848ED">
+  <Association Name="FK__Citas__Id_client__34C8D9D1">
     <End Role="UsuarioCliente" Type="Self.UsuarioCliente" Multiplicity="0..1" />
     <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
     <ReferentialConstraint>
@@ -85,7 +103,19 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Citas__Id_person__300424B4">
+  <Association Name="FK__Citas__Id_estado__35BCFE0A">
+    <End Role="Estado" Type="Self.Estado" Multiplicity="0..1" />
+    <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estado">
+        <PropertyRef Name="Id_estado" />
+      </Principal>
+      <Dependent Role="Citas">
+        <PropertyRef Name="Id_estado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Citas__Id_person__33D4B598">
     <End Role="personal" Type="Self.personal" Multiplicity="0..1" />
     <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
     <ReferentialConstraint>
@@ -97,7 +127,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Citas__Id_TipoAn__2F10007B">
+  <Association Name="FK__Citas__Id_TipoAn__32E0915F">
     <End Role="Animal" Type="Self.Animal" Multiplicity="0..1" />
     <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
     <ReferentialConstraint>
@@ -109,7 +139,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__personal__Id_car__286302EC">
+  <Association Name="FK__personal__Id_car__2A4B4B5E">
     <End Role="cargo" Type="Self.cargo" Multiplicity="0..1" />
     <End Role="personal" Type="Self.personal" Multiplicity="*" />
     <ReferentialConstraint>
@@ -126,22 +156,28 @@
     <EntitySet Name="Animal" EntityType="Self.Animal" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="cargo" EntityType="Self.cargo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Citas" EntityType="Self.Citas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contacto" EntityType="Self.Contacto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Estado" EntityType="Self.Estado" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="personal" EntityType="Self.personal" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UsuarioCliente" EntityType="Self.UsuarioCliente" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Citas__Id_client__30F848ED" Association="Self.FK__Citas__Id_client__30F848ED">
+    <AssociationSet Name="FK__Citas__Id_client__34C8D9D1" Association="Self.FK__Citas__Id_client__34C8D9D1">
       <End Role="UsuarioCliente" EntitySet="UsuarioCliente" />
       <End Role="Citas" EntitySet="Citas" />
     </AssociationSet>
-    <AssociationSet Name="FK__Citas__Id_person__300424B4" Association="Self.FK__Citas__Id_person__300424B4">
+    <AssociationSet Name="FK__Citas__Id_estado__35BCFE0A" Association="Self.FK__Citas__Id_estado__35BCFE0A">
+      <End Role="Estado" EntitySet="Estado" />
+      <End Role="Citas" EntitySet="Citas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Citas__Id_person__33D4B598" Association="Self.FK__Citas__Id_person__33D4B598">
       <End Role="personal" EntitySet="personal" />
       <End Role="Citas" EntitySet="Citas" />
     </AssociationSet>
-    <AssociationSet Name="FK__Citas__Id_TipoAn__2F10007B" Association="Self.FK__Citas__Id_TipoAn__2F10007B">
+    <AssociationSet Name="FK__Citas__Id_TipoAn__32E0915F" Association="Self.FK__Citas__Id_TipoAn__32E0915F">
       <End Role="Animal" EntitySet="Animal" />
       <End Role="Citas" EntitySet="Citas" />
     </AssociationSet>
-    <AssociationSet Name="FK__personal__Id_car__286302EC" Association="Self.FK__personal__Id_car__286302EC">
+    <AssociationSet Name="FK__personal__Id_car__2A4B4B5E" Association="Self.FK__personal__Id_car__2A4B4B5E">
       <End Role="cargo" EntitySet="cargo" />
       <End Role="personal" EntitySet="personal" />
     </AssociationSet>

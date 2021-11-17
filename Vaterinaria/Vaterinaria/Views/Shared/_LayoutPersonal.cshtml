@@ -1,0 +1,158 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Pet Sitter a Animals Category Responsive Web Template | Home :: W3layouts</title>
+
+    <!-- Template CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:400,700,700i&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+    @Styles.Render("~/Content/css/style-starter.css")
+    @Scripts.Render("~/Scripts/js/jquery-3.3.1.min.js")
+    @Scripts.Render("~/Scripts/js/bootstrap.min.js")
+    @Scripts.Render("~/Scripts/js/jquery-3.3.1.min.js")
+</head>
+<body id="home">
+
+    <section class=" w3l-header-4 header-sticky">
+        <header class="absolute-top">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <h1>
+                        <a class="navbar-brand" href="#">
+                            <span class="fas fa-paw" aria-hidden="true"></span>
+                            Pet Sitter
+                        </a>
+                    </h1>
+                    <button class="navbar-toggler bg-gradient collapsed" type="button" data-toggle="collapse"
+                            data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                        <span class="fas fa-bars"></span>
+                        <span class="fas icon-close fa-times"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">@Html.ActionLink("Inicio", "Index", "personal", new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("Cerrar Sesión", "Cerrar", "Cliente", new { @class = "nav-link", @aria_hidden = "true" })</li>
+
+                        </ul>
+                    </div>
+            </div>
+
+            </nav>
+            </div>
+        </header>
+    </section>
+    <script>
+        $(function () {
+            $('.navbar-toggler').click(function () {
+                $('body').toggleClass('noscroll');
+            })
+        });
+    </script>
+
+    @RenderBody()
+
+    <section class="w3l-footer-29-main">
+        <div class="footer-29 py-5">
+            <div class="container py-lg-4">
+                <div class="row footer-top-29">
+                    <div class="col-lg-5 col-md-6 col-sm-12 footer-list-29 footer-1">
+                        <h2><a href="index.html" class=""><span class="fas fa-paw" aria-hidden="true"></span> Pet Sitter</a></h2>
+                        <p>Adipisicing elit. Lauda ntium, archi tecto iure Lorem incidunt iosam qui quo moll itia veniam recus andae archi tecto earum suscipit exce pturi dicta nemo quam.</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-5 footer-list-29 footer-3">
+                        <h6 class="footer-title-29">Get in Touch</h6>
+
+                        <div class="column2">
+                            <div class="href1">
+                                <span>E-mail:</span><a href="mailto:mail@company.com">mail@company.com</a>
+                            </div>
+                            <div class="href2">
+                                <span>Phone:</span><a href="tel:+(12)-00 222 00008">+(12)-00 222 00008</a>
+                            </div>
+                            <div>
+                                <p class="contact-para">
+                                    California, 75 West Rock,
+                                    Maple Building.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fas fa-arrow-up"></span>
+    </button>
+    <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("movetop").style.display = "block";
+            } else {
+                document.getElementById("movetop").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+    <!-- /move top -->
+</body>
+
+</html>
+
+
+
+
+
+
+
+@*@Styles.Render("~/Content/css/style.css")
+    @Styles.Render("~/Content/css/bootstrap.css")
+    @Styles.Render("~/Content/css/font-awesome.css")
+    @Styles.Render("~/Content/css/easy-responsive-tabs.css")
+    @Scripts.Render("~/Scripts/js/jquery-2.2.3.min.js")*@
+
+
+
+<!-- web-fonts -->
+@*<link href="//fonts.googleapis.com/css?family=Limelight" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Junge" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">*@
+
+<!-- //web-fonts -->
+@*@Scripts.Render("~/Scripts/js/bootstrap.js")
+    @Scripts.Render("~/Scripts/js/jquery.transit.js")
+    @Scripts.Render("~/Scripts/js/jquery.textFx.js")
+    @Scripts.Render("~/Scripts/js/SmoothScroll.min.js")
+    @Scripts.Render("~/Scripts/js/easy-responsive-tabs.js")
+    @Scripts.Render("~/Scripts/js/move-top.js")
+    @Scripts.Render("~/Scripts/js/easing.js")*@
+
+
+
+

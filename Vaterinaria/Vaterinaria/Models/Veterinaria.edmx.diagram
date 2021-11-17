@@ -4,18 +4,21 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="18265708cfd9420ab20c09cd484c920c" Name="Diagram1">
-        <EntityTypeShape EntityType="VeterinariaModel.administrador" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="VeterinariaModel.Animal" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="VeterinariaModel.cargo" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+      <Diagram DiagramId="095cb6c86c8f4c9cadbe77942bad41f3" Name="Diagram1">
+        <EntityTypeShape EntityType="VeterinariaModel.administrador" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VeterinariaModel.Animal" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VeterinariaModel.cargo" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
         <EntityTypeShape EntityType="VeterinariaModel.Citas" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="VeterinariaModel.personal" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="VeterinariaModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="VeterinariaModel.UsuarioCliente" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
-        <AssociationConnector Association="VeterinariaModel.FK__Citas__Id_TipoAn__2F10007B" ManuallyRouted="false" />
-        <AssociationConnector Association="VeterinariaModel.FK__personal__Id_car__286302EC" ManuallyRouted="false" />
-        <AssociationConnector Association="VeterinariaModel.FK__Citas__Id_client__30F848ED" ManuallyRouted="false" />
-        <AssociationConnector Association="VeterinariaModel.FK__Citas__Id_person__300424B4" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="VeterinariaModel.Contacto" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VeterinariaModel.Estado" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VeterinariaModel.personal" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VeterinariaModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VeterinariaModel.UsuarioCliente" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
+        <AssociationConnector Association="VeterinariaModel.FK__Citas__Id_TipoAn__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="VeterinariaModel.FK__personal__Id_car__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="VeterinariaModel.FK__Citas__Id_client__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="VeterinariaModel.FK__Citas__Id_estado__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="VeterinariaModel.FK__Citas__Id_person__33D4B598" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

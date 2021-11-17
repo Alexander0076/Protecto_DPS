@@ -1,8 +1,111 @@
-﻿
+﻿@model IEnumerable<Vaterinaria.Models.Citas>
 @{
-    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPersonal.cshtml";
+    @Styles.Render("~/Content/css/styleCitas.css")
+    @Scripts.Render("~/Scripts/js/jquery.js")
+    @Scripts.Render("~/Scripts/js/classie.js")
+    @Scripts.Render("~/Scripts/js/uisearch.js")
+    @Styles.Render("~/Scripts/alertifyjs/css/themes/default.css")
+    @Styles.Render("~/Scripts/alertifyjs/css/alertify.css")
+    @Scripts.Render("~/Scripts/alertifyjs/jquery-3.2.1.min.js")
+    @Scripts.Render("~/Scripts/alertifyjs/alertify.js")
+
 }
 
-<h2>Index</h2>
-<h1>Personal</h1>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+<br /><br />
 
+@Html.ActionLink("Agregar", "Insertar", null, new { @class = "btn btn-warning", @style = "margin-left: 2%; width: 20%; height: 50px; color:black; font-size: 20px" })
+<div class="wrapper-demo" style="min-width:100%;">
+    <!--start-wrapper-dropdown-2-->
+    <div id="dd" class="wrapper-dropdown-2 active scrollbar" style="height:700px;">
+        Citas
+        <!-- start search-->
+        <div class="search-box">
+            @using (Html.BeginForm("Buscar", "personal", FormMethod.Post))
+            {
+                <div id="sb-search" class="sb-search">
+
+                    <form>
+                        <input class="sb-search-input" placeholder="Enter your search term..." type="search" name="valor" id="search" aria-label="Search">
+                        <input class="sb-search-submit fas fa-search" type="submit" value="Buscar">
+                        <span class="sb-icon-search fas fa-search"> </span>
+                    </form>
+
+                </div>
+            }
+        </div>
+        <script>
+            new UISearch(document.getElementById('sb-search'));
+        </script>
+        <!-- /search-scripts -->
+        <!-- end search-->
+        <div>
+            <ul>
+                @foreach (var item in Model)
+                {
+                    <div class="friends-grids">
+                        <div class="grids-left">
+                            @Html.ActionLink("Detalle", "Detalle", new { id = item.Nombre_Propietario }, new { })
+                            @Html.ActionLink("Modificar", "Modificar", new { id = item.Id_cita }, new { })
+                        </div>
+                        <div class="friend-grid">
+                            @Html.ActionLink("Eliminar", "Eliminar", new { id = item.Id_cita }, new { miatributo = "valor1", @class = "fas fa-trash", onclick = "return confirm('¿Estas seguro de eliminar esta cita?');" })
+                        </div>
+                        <div class="grids-right">
+                            <h5 style="color:gray; font-size: 30px;">Dueño: @item.Nombre_Propietario</h5>
+                            <h5 style="color:gray; font-size: 30px;">Mascota: @item.Nombre_Animal</h5>
+                            <ul class="grids-right-info">
+                                <li class="far fa-calendar-alt"> @item.Fecha_cita</li>
+                                <li class="far fa-clock"> @item.Hora_cita</li>
+                                <li class="far fa-question-circle"> @item.Estado.Tipo_estado</li>
+                            </ul>
+                        </div>
+                        <div class="clear"> </div>
+                    </div>
+                }
+
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<!--end-wrapper-dropdown-2-->
+<!--start-script-->
+<script type="text/javascript">
+    function DropDown(el) {
+        this.dd = el;
+        this.initEvents();
+    }
+    DropDown.prototype = {
+        initEvents: function () {
+            var obj = this;
+
+            obj.dd.on('click', function (event) {
+                $(this).toggleClass('active');
+                event.stopPropagation();
+            });
+        }
+    }
+    $(function () {
+
+        var dd = new DropDown($('#dd'));
+
+        $(document).click(function () {
+            // all dropdowns
+            $('.wrapper-dropdown-2').removeClass('active');
+        });
+
+    });
+</script>
+
+@if (TempData["mensajePersonal"] != null)
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            alertify.success("@TempData["mensajePersonal"]");
+        });
+    </script>
+}

@@ -29,6 +29,8 @@ namespace Vaterinaria.Models
         public virtual DbSet<Animal> Animal { get; set; }
         public virtual DbSet<cargo> cargo { get; set; }
         public virtual DbSet<Citas> Citas { get; set; }
+        public virtual DbSet<Contacto> Contacto { get; set; }
+        public virtual DbSet<Estado> Estado { get; set; }
         public virtual DbSet<personal> personal { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<UsuarioCliente> UsuarioCliente { get; set; }

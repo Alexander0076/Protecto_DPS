@@ -241,6 +241,7 @@ namespace Vaterinaria.Models
             cita.Sexo = Citaid.Sexo;
             cita.Id_personal = Citaid.Id_personal;
             cita.Id_cliente = Citaid.Id_cliente;
+            cita.Id_estado = Citaid.Id_estado;
 
             return db.SaveChanges();
 
@@ -257,6 +258,111 @@ namespace Vaterinaria.Models
         {
             Citas Cita = db.Citas.Find(id);
             return Cita;
+        }
+
+        //---------------------------------Tabla de estado de cita--------------------------------------------------------
+
+        public List<Estado> listaEstado()
+        {
+            return db.Estado.ToList();
+        }
+
+        public List<Estado> listaBuscarEstado(String Tipo_estado)
+        {
+
+            if (Tipo_estado.Equals(""))
+            {
+                return db.Estado.ToList();
+            }
+            else
+            {
+                var resultados = from cc in db.Estado
+                                 where cc.Tipo_estado.Contains(Tipo_estado)
+                                 select cc;
+                return resultados.ToList();
+            }
+        }
+
+        public int insertarEstado(Estado Estado)
+        {
+            db.Estado.Add(Estado);
+            return db.SaveChanges();
+
+        }
+
+        public int editarEstado(Estado Tipoid)
+        {
+            Estado estado = db.Estado.Find(Tipoid.Id_estado);
+            estado.Tipo_estado = Tipoid.Tipo_estado;
+            return db.SaveChanges();
+
+        }
+
+        public int eliminarEstado(int id)
+        {
+            Estado Tipo = db.Estado.Find(id);
+            db.Estado.Remove(Tipo);
+            return db.SaveChanges();
+        }
+
+        public Estado obtenerEstado(int id)
+        {
+            Estado Tipo = db.Estado.Find(id);
+            return Tipo;
+        }
+
+        //---------------------------------Tabla de consultas--------------------------------------------------------
+
+        public List<Contacto> listaContacto()
+        {
+            return db.Contacto.ToList();
+        }
+
+        public List<Contacto> listaBuscarContacto(String Nombre)
+        {
+
+            if (Nombre.Equals(""))
+            {
+                return db.Contacto.ToList();
+            }
+            else
+            {
+                var resultados = from cc in db.Contacto
+                                 where cc.Nombre.Contains(Nombre)
+                                 select cc;
+                return resultados.ToList();
+            }
+        }
+
+        public int insertarContacto(Contacto Nombre)
+        {
+            db.Contacto.Add(Nombre);
+            return db.SaveChanges();
+
+        }
+
+        public int editarContacto(Contacto Nombreid)
+        {
+            Contacto contacto = db.Contacto.Find(Nombreid.Id_contacto);
+            contacto.Nombre = Nombreid.Nombre;
+            contacto.Email = Nombreid.Email;
+            contacto.Phone = Nombreid.Phone;
+            contacto.Mensaje = Nombreid.Mensaje;
+            return db.SaveChanges();
+
+        }
+
+        public int eliminarContacto(int id)
+        {
+            Contacto contacto = db.Contacto.Find(id);
+            db.Contacto.Remove(contacto);
+            return db.SaveChanges();
+        }
+
+        public Contacto obtenerContacto(int id)
+        {
+            Contacto contacto = db.Contacto.Find(id);
+            return contacto;
         }
     }
 }

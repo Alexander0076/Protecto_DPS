@@ -128,6 +128,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\personalController.cs" />
@@ -145,6 +146,13 @@
       <DependentUpon>Veterinaria.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Citas.cs">
+      <DependentUpon>Veterinaria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ConsultasModels.cs" />
+    <Compile Include="Models\Contacto.cs">
+      <DependentUpon>Veterinaria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Estado.cs">
       <DependentUpon>Veterinaria.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\personal.cs">
@@ -171,7 +179,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Veterinaria.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\ConsultasModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -183,8 +190,12 @@
     <Content Include="Content\css\chocolat.css" />
     <Content Include="Content\css\easy-responsive-tabs.css" />
     <Content Include="Content\css\font-awesome.css" />
+    <Content Include="Content\css\jquery-ui.css" />
+    <Content Include="Content\css\style-starter.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\css\style1.css" />
+    <Content Include="Content\css\styleCitas.css" />
+    <Content Include="Content\css\styleDetalle.css" />
     <Content Include="Content\css\stylelista.css" />
     <Content Include="Content\css\StyleNuevaCita.css" />
     <Content Include="favicon.ico" />
@@ -192,25 +203,61 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\1.jpg" />
+    <Content Include="images\10.jpg" />
+    <Content Include="images\11.jpg" />
+    <Content Include="images\12.jpg" />
+    <Content Include="images\13.jpg" />
+    <Content Include="images\2.jpg" />
+    <Content Include="images\3.jpg" />
+    <Content Include="images\4.jpg" />
+    <Content Include="images\5.jpg" />
+    <Content Include="images\6.jpg" />
+    <Content Include="images\7.jpg" />
+    <Content Include="images\8.jpg" />
+    <Content Include="images\9.jpg" />
     <Content Include="images\a.jpg" />
     <Content Include="images\a1.jpg" />
+    <Content Include="images\a1.png" />
+    <Content Include="images\a2.png" />
+    <Content Include="images\bg.jpg" />
     <Content Include="images\bg1.jpg" />
+    <Content Include="images\camera.png" />
+    <Content Include="images\chat.png" />
     <Content Include="images\clinica-veterinaria.jpg" />
     <Content Include="images\close.png" />
+    <Content Include="images\down.png" />
+    <Content Include="images\f1.jpg" />
+    <Content Include="images\f2.jpg" />
+    <Content Include="images\f3.jpg" />
+    <Content Include="images\f4.jpg" />
+    <Content Include="images\f5.jpg" />
+    <Content Include="images\f6.jpg" />
+    <Content Include="images\f7.jpg" />
+    <Content Include="images\f8.jpg" />
+    <Content Include="images\f9.jpg" />
     <Content Include="images\g1.jpg" />
     <Content Include="images\g2.jpg" />
     <Content Include="images\g3.jpg" />
     <Content Include="images\g4.jpg" />
     <Content Include="images\g5.jpg" />
     <Content Include="images\g6.jpg" />
+    <Content Include="images\heart.png" />
     <Content Include="images\img1.jpg" />
     <Content Include="images\img2.jpg" />
     <Content Include="images\img3.jpg" />
     <Content Include="images\img4.jpg" />
     <Content Include="images\img5.jpg" />
     <Content Include="images\left.png" />
+    <Content Include="images\menu.png" />
     <Content Include="images\move-up.png" />
     <Content Include="images\right.png" />
+    <Content Include="images\search.png" />
+    <Content Include="images\t1.jpg" />
+    <Content Include="images\t2.jpg" />
+    <Content Include="images\t3.jpg" />
+    <Content Include="images\t4.jpg" />
+    <Content Include="images\user.png" />
     <Content Include="Models\Veterinaria.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Veterinaria.edmx</DependentUpon>
@@ -266,15 +313,31 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\js\all.js" />
+    <Content Include="Scripts\js\app.js" />
     <Content Include="Scripts\js\bootstrap.js" />
+    <Content Include="Scripts\js\bootstrap.min.js" />
+    <Content Include="Scripts\js\classie.js" />
     <Content Include="Scripts\js\easing.js" />
     <Content Include="Scripts\js\easy-responsive-tabs.js" />
+    <Content Include="Scripts\js\filedrag.js" />
+    <Content Include="Scripts\js\jquery-1.12.0.min.js" />
     <Content Include="Scripts\js\jquery-2.2.3.min.js" />
+    <Content Include="Scripts\js\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\js\jquery-ui.js" />
     <Content Include="Scripts\js\jquery.chocolat.js" />
+    <Content Include="Scripts\js\jquery.js" />
+    <Content Include="Scripts\js\jquery.min.js" />
     <Content Include="Scripts\js\jquery.textFx.js" />
     <Content Include="Scripts\js\jquery.transit.js" />
     <Content Include="Scripts\js\move-top.js" />
+    <Content Include="Scripts\js\owl.carousel.js" />
+    <Content Include="Scripts\js\owl.carousel2.js" />
+    <Content Include="Scripts\js\particles.min.js.js" />
+    <Content Include="Scripts\js\popper.min.js" />
+    <Content Include="Scripts\js\script.js" />
     <Content Include="Scripts\js\SmoothScroll.min.js" />
+    <Content Include="Scripts\js\uisearch.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -297,9 +360,18 @@
     <Content Include="Views\Shared\_LayoutCliente.cshtml" />
     <Content Include="Views\Cliente\Insertar.cshtml" />
     <Content Include="Views\Cliente\Citas.cshtml" />
+    <Content Include="Views\Home\Registrar.cshtml" />
+    <Content Include="Views\Shared\_LayoutPersonal.cshtml" />
+    <Content Include="Views\personal\Detalle.cshtml" />
+    <Content Include="Views\personal\Insertar.cshtml" />
+    <Content Include="Views\personal\Modificar.cshtml" />
+    <Content Include="Views\Cliente\Modificar.cshtml" />
+    <Content Include="Views\Home\Servicios.cshtml" />
+    <Content Include="Views\Home\Contacto.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Admin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

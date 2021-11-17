@@ -9,8 +9,15 @@ namespace Vaterinaria.Controllers
 {
     public class HomeController : Controller
     {
+        ConsultasModels modelo = new ConsultasModels();
         public ActionResult Index()
         {
+            return View();
+        }
+
+        public ActionResult Servicios()
+        {
+
             return View();
         }
 
@@ -19,7 +26,7 @@ namespace Vaterinaria.Controllers
 
             return View();
         }
-        public ActionResult Registrer()
+        public ActionResult Registrar()
         {
 
             return View();
@@ -40,6 +47,10 @@ namespace Vaterinaria.Controllers
                                 where c.Usuario == Usuario.Trim() && c.pass == pass.Trim()
                                 select c;
 
+                    var list3 = from a in db.administrador
+                                where a.Usuario == Usuario.Trim() && a.pass == pass.Trim()
+                                select a;
+
                     if(list1.Count() > 0)
                     {
                         personal user = list1.First();
@@ -53,6 +64,11 @@ namespace Vaterinaria.Controllers
                         Session["UserC"] = userc;
                         TempData["UserC"] = userc;
                         return RedirectToAction("Index", "Cliente");
+
+                    }else if(list3.Count() > 0)
+                    {
+                        administrador admin = list3.First();
+                        return RedirectToAction("Index", "Admin");
                     }
                     else
                     {
@@ -70,20 +86,48 @@ namespace Vaterinaria.Controllers
             }
 
         }
-
+        [ActionName("Agregar")]
+        public ActionResult insert(String Usuario, String pass, String Nombre, int Edad, String Sexo, String Direccion, String Telefono)
+        {
+            UsuarioCliente usuario = new UsuarioCliente();
+            usuario.Usuario = Usuario;
+            usuario.pass = pass;
+            usuario.Nombre = Nombre;
+            usuario.Edad = Edad;
+            usuario.Sexo = Sexo;
+            usuario.Direccion = Direccion;
+            usuario.Telefono = Telefono;
+            
+            modelo.insertarCliente(usuario);
+            TempData["mensajeCliente"] = "Registro exitoso";
+            return RedirectToAction("Login", modelo.listaCliente());
+        }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
+        }
+        
+
+        [ActionName("AgregarMensaje")]
+        public ActionResult insertar(String Nombre, String Email, String Phone, String Mensaje)
+        {
+
+            Contacto contacto = new Contacto();
+            contacto.Nombre = Nombre;
+            contacto.Email = Email;
+            contacto.Phone = Phone;
+            contacto.Mensaje = Mensaje;
+
+            modelo.insertarContacto(contacto);
+            TempData["mensajeCliente"] = "Gracias por constactarnos";
+            return RedirectToAction("Contact", modelo.listaContacto());
         }
     }
 }
