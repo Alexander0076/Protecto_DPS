@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Vaterinaria.Models.Animal>
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    int suma = 0;
+    @Styles.Render("~/Content/css/StyleNuevaCita.css")
+    @Styles.Render("~/Scripts/alertifyjs/css/themes/default.css")
+    @Styles.Render("~/Scripts/alertifyjs/css/alertify.css")
+    @Scripts.Render("~/Scripts/alertifyjs/jquery-3.2.1.min.js")
+    @Scripts.Render("~/Scripts/alertifyjs/alertify.js")
+}
+
+
+
+<!--main content start-->
+<section id="main-content">
+    <section class="wrapper">
+        <!-- //market-->
+        <div class="market-updates">
+
+            <div class="col-md-3 market-update-gd">
+                <div class="market-update-block clr-block-3">
+                    <div class="col-md-4 market-update-right">
+                        <i class="fa fa-eye"></i>
+                    </div>
+                    <div class="col-md-8 market-update-left">
+                        <h4>Animal</h4>
+                        <h3>@Model.Count()</h3>
+                        <p>Cantidad de los tipos de animales</p>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+            @Html.ActionLink("Agregrar nuevo tipo de animal", "Insertar", "AdminAnimal", new { @class = "btn btn-warning", @style = "position: relative; top: 140px;" })
+            <div class="clearfix"> </div>
+        </div>
+        <!-- //market-->
+        <div class="agileits-w3layouts-stats">
+            <div class="col-md-12 stats-info stats-last widget-shadow">
+                <div class="stats-last-agile">
+                    <table class="table stats-table ">
+                        <thead>
+                            <tr>
+                                <th>NO°</th>
+                                <th>Tipo de animal</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <th scope="row">@Html.DisplayFor(modelItem => item.Id_TipoAnimal)</th>
+                                    <td> @Html.DisplayFor(modelItem => item.Tipo)</td>
+
+                                    <td>
+                                        @Html.ActionLink("Modificar", "Modificar", new { id = item.Id_TipoAnimal }, new { @class = "label label-info" })
+                                        @Html.ActionLink("Eliminar", "Eliminar", new { id = item.Id_TipoAnimal }, new { miatributo = "valor1", @class = "label label-danger", onclick = "return confirm('¿Estas seguro de eliminar esta cita?');" })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+
+
+
+
+
+    </section>
+
+</section>
+@if (TempData["mensajePersonal"] != null)
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            alertify.success("@TempData["mensajePersonal"]");
+        });
+    </script>
+}

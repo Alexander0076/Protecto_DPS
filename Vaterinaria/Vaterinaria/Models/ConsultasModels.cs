@@ -72,6 +72,22 @@ namespace Vaterinaria.Models
             return db.cargo.ToList();
         }
 
+        public List<cargo> listaBuscarCargo(String Cargo)
+        {
+
+            if (Cargo.Equals(""))
+            {
+                return db.cargo.ToList();
+            }
+            else
+            {
+                var resultados = from cc in db.cargo
+                                 where cc.Nombre_cargo.Contains(Cargo)
+                                 select cc;
+                return resultados.ToList();
+            }
+        }
+
         public int insertarCargo(cargo Nombre_cargo)
         {
             db.cargo.Add(Nombre_cargo);
@@ -87,7 +103,7 @@ namespace Vaterinaria.Models
 
         }
 
-        public int eliminarCago(int id)
+        public int eliminarCargo(int id)
         {
             cargo Cargo = db.cargo.Find(id);
             db.cargo.Remove(Cargo);
@@ -108,7 +124,7 @@ namespace Vaterinaria.Models
             return db.UsuarioCliente.ToList();
         }
 
-        public List<UsuarioCliente> listaBuscarClientes(String Nombre)
+        public List<UsuarioCliente> listaBuscarCliente(String Nombre)
         {
 
             if (Nombre.Equals(""))
@@ -165,6 +181,22 @@ namespace Vaterinaria.Models
         public List<Animal> listaAnimal()
         {
             return db.Animal.ToList();
+        }
+
+        public List<Animal> listaBuscarAnimal(String Tipo)
+        {
+
+            if (Tipo.Equals(""))
+            {
+                return db.Animal.ToList();
+            }
+            else
+            {
+                var resultados = from cc in db.Animal
+                                 where cc.Tipo.Contains(Tipo)
+                                 select cc;
+                return resultados.ToList();
+            }
         }
 
         public int insertarAnimal(Animal Tipo)

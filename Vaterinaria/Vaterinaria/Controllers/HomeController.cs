@@ -68,6 +68,7 @@ namespace Vaterinaria.Controllers
                     }else if(list3.Count() > 0)
                     {
                         administrador admin = list3.First();
+                        Session["Admin"] = admin;
                         return RedirectToAction("Index", "Admin");
                     }
                     else
