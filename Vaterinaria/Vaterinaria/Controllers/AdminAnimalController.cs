@@ -15,7 +15,11 @@ namespace Vaterinaria.Controllers
         {
             return View(modelo.listaAnimal());
         }
-
+        public ActionResult Cerrar()
+        {
+            Session["Admin"] = null;
+            return RedirectToAction("Index", "Home");
+        }
         public ActionResult Insertar()
         {
 

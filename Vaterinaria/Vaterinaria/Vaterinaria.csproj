@@ -445,6 +445,7 @@
     <Content Include="Views\AdminUsuario\Index.cshtml" />
     <Content Include="Views\AdminUsuario\Insertar.cshtml" />
     <Content Include="Views\AdminUsuario\Modificar.cshtml" />
+    <Content Include="Views\personal\Mensaje.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -20,6 +20,10 @@ namespace Vaterinaria.Controllers
         {
             return View("Detalle", modelo.listaBuscarCita(id));
         }
+        public ActionResult Mensaje()
+        {
+            return View(modelo.listaContacto());
+        }
         public ActionResult Cerrar()
         {
             Session ["User"] = null;

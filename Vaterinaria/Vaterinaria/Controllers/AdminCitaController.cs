@@ -15,7 +15,11 @@ namespace Vaterinaria.Controllers
         {
             return View(modelo.listaCita());
         }
-
+        public ActionResult Cerrar()
+        {
+            Session["Admin"] = null;
+            return RedirectToAction("Index", "Home");
+        }
         public ActionResult Insertar()
         {
 

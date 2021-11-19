@@ -100,9 +100,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout">
-                            <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
-                            <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
-                            <li><a href="login.html"><i class="fa fa-key"></i> Log Out</a></li>
+                            <li> @Html.ActionLink("Cerrar Sesión", "Cerrar", "Admin", new { @class = "fa fa-key", @aria_hidden = "true" })</li>
                         </ul>
                     </li>
                     <!-- user login dropdown end -->
@@ -126,8 +124,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <span>Empleados</span>
                             </a>
                             <ul class="sub">
-                                <li><a href="typography.html">Personal</a></li>
-                                <li><a href="glyphicon.html">Cargo</a></li>
+                                <li>@Html.ActionLink("Personal", "Index", "Admin")</li>
+                                <li>@Html.ActionLink("Cargo", "Index", "AdminCargo")</li>
                             </ul>
                         </li>
                         <li class="sub-menu">
@@ -136,9 +134,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <span>Clientes</span>
                             </a>
                             <ul class="sub">
-                                <li><a href="basic_table.html">Usuarios Clientes</a></li>
-                                <li><a href="responsive_table.html">Citas</a></li>
-                                <li><a href="responsive_table.html">Tipo de animal</a></li>
+                                <li>@Html.ActionLink("Usuarios Clientes", "Index", "AdminUsuario")</li>
+                                <li>@Html.ActionLink("Citas", "Index", "AdminCita")</li>
+                                <li>@Html.ActionLink("Tipo de animal", "Index", "AdminAnimal")</li>
                             </ul>
                         </li>
                     </ul>
