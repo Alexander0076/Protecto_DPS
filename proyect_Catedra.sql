@@ -96,6 +96,7 @@ SELECT * FROM administrador
 SELECT * FROM cargo
 SELECT * FROM Estado
 SELECT * FROM Contacto
+SELECT * FROM Animal
 
 INSERT INTO Estado VALUES('Activa')
 INSERT INTO Estado VALUES('Finalizada')
