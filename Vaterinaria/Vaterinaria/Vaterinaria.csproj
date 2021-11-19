@@ -428,7 +428,6 @@
     <Content Include="Views\personal\Modificar.cshtml" />
     <Content Include="Views\Cliente\Modificar.cshtml" />
     <Content Include="Views\Home\Servicios.cshtml" />
-    <Content Include="Views\Home\Contacto.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Admin\Insertar.cshtml" />
