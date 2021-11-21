@@ -3,6 +3,11 @@
 @{
     Layout = "~/Views/Shared/_LayoutCliente.cshtml";
     @Styles.Render("~/Content/css/stylelista.css")
+    @Styles.Render("~/Content/css/StyleNuevaCita.css")
+    @Styles.Render("~/Scripts/alertifyjs/css/themes/default.css")
+    @Styles.Render("~/Scripts/alertifyjs/css/alertify.css")
+    @Scripts.Render("~/Scripts/alertifyjs/jquery-3.2.1.min.js")
+    @Scripts.Render("~/Scripts/alertifyjs/alertify.js")
 }
 
 <section class="w3l-inner-banner-main">
@@ -18,39 +23,48 @@
 
 
 <p>
-    @Html.ActionLink("Crear una cita", "Insertar", "Cliente", new {@class="btn btn-warning" })
+    @Html.ActionLink("Crear una cita", "Insertar", "Cliente", new { @class = "btn btn-warning" })
 </p>
 
-<div class="col-md-8 span_8">
-    <div class="activity_box">
-        <div class="scrollbar" id="style-2">
-
-            @foreach (var item in Model)
-            {
-                <div class="activity-row">
-                    <div class="col-xs-1"><i class="fa fa-thumbs-up text-info icon_13"> </i>  </div>
-                    <div class="col-xs-3 activity-img">
-                        @Html.ActionLink("Modificar", "Modificar", new { id = item.Id_cita }, new { })
-                        @Html.ActionLink("Eliminar", "Eliminar", new { id = item.Id_cita }, new { miatributo = "valor1", @class = "", onclick = "return confirm('¿Estas seguro de eliminar esta cita?');" })
-                    </div>
-                    <div class="col-xs-8 activity-desc">
-                        <h5>Nombre del dueño: @item.Nombre_Propietario</h5>
-                        <h5>Nombre de la mascota: @item.Nombre_Animal</h5>
-                        <p>Veterinario: @item.personal.Nombre</p>
-                        <p>Raza: @item.Raza</p>
-                        <p>Edad: @item.Edad</p>
-                        <p>Sexo: @item.Sexo</p>
-                        <p>Tipo: @item.Animal.Tipo</p>
-                        <h6>@item.Fecha_cita</h6>
-                        <h6>@item.Hora_cita</h6>
-                        <h6>@item.Estado.Tipo_estado</h6>
-                    </div>
-                    <div class="clearfix"> </div>
-                </div>
-
-            }
-        </div>
-    </div>
-</div>
-
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<table class="table">
+    <tr>
+        <th>Nombre del dueño</th>
+        <th>Nombre de la mascota</th>
+        <th>Veterinario</th>
+        <th>Raza</th>
+        <th>Edad</th>
+        <th>Sexo</th>
+        <th>Tipo</th>
+        <th>Fecha de cita</th>
+        <th>Hora de cita</th>
+        <th>Esta de la cita</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Nombre_Propietario</td>
+            <td>@item.Nombre_Animal</td>
+            <td> @item.personal.Nombre</td>
+            <td> @item.Raza</td>
+            <td>@item.Edad</td>
+            <td>@item.Sexo</td>
+            <td>@item.Animal.Tipo</td>
+            <td>@item.Fecha_cita</td>
+            <td>@item.Hora_cita</td>
+            <td>@item.Estado.Tipo_estado</td>
+            <td>
+                @Html.ActionLink("Modificar", "Modificar", new { id = item.Id_cita }, new { })
+                @Html.ActionLink("Eliminar", "Eliminar", new { id = item.Id_cita }, new { miatributo = "valor1", @class = "", onclick = "return confirm('¿Estas seguro de eliminar esta cita?');" })
+            </td>
+        </tr>
+    }
+</table>
+<br /><br /><br /><br />
+@if (TempData["mensajeCliente"] != null)
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            alertify.success("@TempData["mensajePersonal"]");
+        });
+    </script>
+}

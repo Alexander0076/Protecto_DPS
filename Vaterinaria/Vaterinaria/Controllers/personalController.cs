@@ -68,6 +68,8 @@ namespace Vaterinaria.Controllers
             List<SelectListItem> listaP = new List<SelectListItem>();
             List<Estado> lista3 = modelo.listaEstado();
             List<SelectListItem> listaE = new List<SelectListItem>();
+            List<UsuarioCliente> lista4 = modelo.listaCliente();
+            List<SelectListItem> listaC = new List<SelectListItem>();
             Citas cita = modelo.obtenerCita(id);
             foreach (Animal item in lista1)
             {
@@ -113,7 +115,23 @@ namespace Vaterinaria.Controllers
                 }
 
             }
-            
+
+            foreach (UsuarioCliente item in lista4)
+            {
+                if (item.Id_Usuario == cita.UsuarioCliente.Id_Usuario)
+                {
+                    listaC.Add(new SelectListItem { Text = item.Nombre, Value = item.Id_Usuario.ToString(), Selected = true });
+
+                }
+                else
+                {
+                    listaC.Add(new SelectListItem { Text = item.Nombre, Value = item.Id_Usuario.ToString() });
+
+                }
+
+            }
+
+            ViewBag.listaCliente = listaC;
             ViewBag.listaEstado = listaE;
             ViewBag.listaAnimal = listaA;
             ViewBag.listaPersonal = listaP;
@@ -142,6 +160,7 @@ namespace Vaterinaria.Controllers
             cita.Edad = Edad;
             cita.Sexo = Sexo;
             cita.Id_personal = listaPersonal;
+            cita.Id_cliente = 1;
             cita.Id_estado = 1;
 
 
@@ -152,7 +171,7 @@ namespace Vaterinaria.Controllers
             return RedirectToAction("Index", modelo.listaCita());
         }
         [ActionName("Editar")]
-        public ActionResult edit(int listaPersonal, int listaAnimal, int listaEstado, int Id_cita, String Nombre_Propietario, String Raza, DateTime Fecha_cita, TimeSpan Hora_cita, String Nombre_Animal, int Edad, String Sexo)
+        public ActionResult edit(int listaPersonal, int listaAnimal, int listaEstado,int listaCliente, int Id_cita, String Nombre_Propietario, String Raza, DateTime Fecha_cita, TimeSpan Hora_cita, String Nombre_Animal, int Edad, String Sexo)
         {
 
             Citas cita = new Citas();
@@ -166,6 +185,7 @@ namespace Vaterinaria.Controllers
             cita.Edad = Edad;
             cita.Sexo = Sexo;
             cita.Id_personal = listaPersonal;
+            cita.Id_cliente = listaCliente;
             cita.Id_estado = listaEstado;
 
             modelo.editarCita(cita);

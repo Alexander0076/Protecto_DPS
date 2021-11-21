@@ -239,6 +239,7 @@
     <Content Include="images1\pass.png" />
     <Content Include="images1\prev.png" />
     <Content Include="images1\search-icon.png" />
+    <Content Include="images1\user.png" />
     <Content Include="images\1.jpg" />
     <Content Include="images\10.jpg" />
     <Content Include="images\11.jpg" />

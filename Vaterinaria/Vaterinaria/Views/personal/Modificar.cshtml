@@ -72,6 +72,13 @@
                     @Html.ValidationMessageFor(model => model.Id_estado, "", new { @class = "text-danger" })
                 </div>
             </div>
+            <div class="main-divs-agileits-w3layouts">
+                <div class="bottom-w3-agileits-space form-text1">
+                    <label style="color: black;">Usuario</label>
+                    @Html.DropDownList("listaCliente", null, htmlAttributes: new { @class = "frm-field required sect", @onchange = "change_country(this.value)", @id = "country1" })
+                    @Html.ValidationMessageFor(model => model.Id_personal, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
             <input type="submit" value="Submit">
             <br />

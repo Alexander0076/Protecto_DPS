@@ -2,6 +2,11 @@
 @{
     Layout = null;
     @Styles.Render("~/Content/css/style1.css")
+    @Styles.Render("~/Content/css/StyleNuevaCita.css")
+    @Styles.Render("~/Scripts/alertifyjs/css/themes/default.css")
+    @Styles.Render("~/Scripts/alertifyjs/css/alertify.css")
+    @Scripts.Render("~/Scripts/alertifyjs/jquery-3.2.1.min.js")
+    @Scripts.Render("~/Scripts/alertifyjs/alertify.js")
 }
 
 <!DOCTYPE html>
@@ -65,7 +70,14 @@
 
 
 </body>
-
+@if (TempData["mensajeCliente"] != null)
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            alertify.success("@TempData["mensajePersonal"]");
+        });
+    </script>
+}
 
 
 </html>

@@ -101,6 +101,7 @@ SELECT * FROM Animal
 INSERT INTO Estado VALUES('Activa')
 INSERT INTO Estado VALUES('Finalizada')
 INSERT INTO Estado VALUES('Cancelada')
+INSERT INTO UsuarioCliente VALUES('cliente','cliente','cliente',1,'Nodefinido','Si locación','0000-0000')
 INSERT INTO UsuarioCliente VALUES('cliente','12345','Ulises',19,'Masculino','Zacamil','7125-4039')
 INSERT INTO cargo values('Veterinario')
 INSERT INTO personal VALUES('Alexander Elías','Masculino','2002-10-02',1,'uliseselias007@gmail.com','123')
